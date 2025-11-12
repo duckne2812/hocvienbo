@@ -158,6 +158,23 @@
       text-align: center;
     }
 
+    .login-switch {
+      margin-top: 8px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .login-switch button {
+      border: none;
+      background: transparent;
+      color: var(--blue-main);
+      cursor: pointer;
+      font-size: 12px;
+      padding: 0;
+    }
+
     /* ===== APP SHELL ===== */
 
     .system-bar {
@@ -380,6 +397,19 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+
+    .sidebar-backdrop {
+      display: none;
     }
 
     /* ===== CARDS & GRID ===== */
@@ -639,32 +669,32 @@
       background: #ffedd5;
       font-size: 10px;
     }
-    .submit-btn {
-  margin-top: 4px;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: none;
-  background: var(--blue-main);
-  color: #ffffff;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  opacity: 0.9;
-}
-
-.submit-btn[disabled] {
-  background: #9ca3af;
-  cursor: default;
-  opacity: 0.8;
-}
-
 
     .assignment-status.done {
       border-color: #22c55e;
       color: #15803d;
       background: #dcfce7;
+    }
+
+    .submit-btn {
+      margin-top: 4px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: none;
+      background: var(--blue-main);
+      color: #ffffff;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    .submit-btn[disabled] {
+      background: #9ca3af;
+      cursor: default;
+      opacity: 0.8;
     }
 
     .card-assignments {
@@ -798,7 +828,6 @@
 
     /* ===== RESPONSIVE ===== */
 
-    /* Tablet */
     @media (max-width: 992px) {
       .grid-top {
         grid-template-columns: minmax(0, 1fr);
@@ -816,122 +845,107 @@
     }
 
     /* Điện thoại */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+      }
 
-  .app-shell-main {
-    flex-direction: column;
-  }
+      .app-shell-main {
+        flex-direction: column;
+      }
 
-  /* sidebar dạng trượt cho mobile */
-  .sidebar {
-    position: fixed;
-    inset: 0 auto 0 0;
-    width: 240px;
-    z-index: 30;
-    transform: translateX(-100%);
-    transition: transform 0.2s ease-out;
-    box-shadow: 8px 0 20px rgba(15, 23, 42, 0.2);
-    background: var(--bg-sidebar);
-  }
+      /* sidebar dạng trượt cho mobile */
+      .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 240px;
+        z-index: 30;
+        transform: translateX(-100%);
+        transition: transform 0.2s ease-out;
+        box-shadow: 8px 0 20px rgba(15, 23, 42, 0.2);
+        background: var(--bg-sidebar);
+      }
 
-  .sidebar.sidebar-open {
-    transform: translateX(0);
-  }
+      .sidebar.sidebar-open {
+        transform: translateX(0);
+      }
 
-  .sidebar-backdrop.show {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.35);
-    z-index: 25;
-  }
+      .sidebar-backdrop.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.35);
+        z-index: 25;
+      }
 
-  .menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-  }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
 
-  .content {
-    padding: 10px 8px 16px;
-  }
+      .content {
+        padding: 10px 8px 16px;
+      }
 
-  .grid-top {
-    grid-template-columns: minmax(0, 1fr);
-  }
+      .grid-top {
+        grid-template-columns: minmax(0, 1fr);
+      }
 
-  .grid-classes {
-    grid-template-columns: minmax(0, 1fr);
-  }
+      .grid-classes {
+        grid-template-columns: minmax(0, 1fr);
+      }
 
-  .grid-bottom {
-    grid-template-columns: minmax(0, 1fr);
-    margin-top: 12px;
-  }
+      .grid-bottom {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 12px;
+      }
 
-  .card {
-    border-radius: 14px;
-    padding: 10px 11px;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-  }
+      .card {
+        border-radius: 14px;
+        padding: 10px 11px;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      }
 
-  .card-greeting h2 {
-    font-size: 18px;
-  }
+      .card-greeting h2 {
+        font-size: 18px;
+      }
 
-  .card-greeting p {
-    font-size: 12px;
-  }
+      .card-greeting p {
+        font-size: 12px;
+      }
 
-  .greeting-hand {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-    right: 14px;
-  }
+      .greeting-hand {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+        right: 14px;
+      }
 
-  .class-name {
-    font-size: 13px;
-  }
+      .class-name {
+        font-size: 13px;
+      }
 
-  .assignment-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
+      .assignment-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
 
-  .assignment-right {
-    text-align: left;
-  }
+      .assignment-right {
+        text-align: left;
+      }
 
-  .calendar-grid {
-    font-size: 11px;
-  }
-}
-
-    .menu-toggle {
-  display: none;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  cursor: pointer;
-  margin-right: 6px;
-}
-
-/* backdrop cho sidebar mobile */
-.sidebar-backdrop {
-  display: none;
-}
-
+      .calendar-grid {
+        font-size: 11px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -951,6 +965,7 @@
         Backend demo đang dùng tài khoản: <b>duc / 123456</b>.
       </p>
 
+      <!-- FORM ĐĂNG NHẬP -->
       <form id="login-form">
         <div class="login-form-group">
           <label class="login-label" for="username">Tên đăng nhập</label>
@@ -976,17 +991,76 @@
 
         <button type="submit" class="login-button">Đăng nhập</button>
 
-        <div class="login-error" id="login-error" style="display:none;">
-          Sai tài khoản hoặc mật khẩu. Thử lại nhé (gợi ý: <b>duc / 123456</b>).
-        </div>
-
-        <div class="login-hint">
-          Đây là phiên bản demo, backend chạy ở <code>Nha duck</code>.
+        <div class="login-switch">
+          <span>Chưa có tài khoản?</span>
+          <button type="button" id="show-register">Đăng ký</button>
         </div>
       </form>
 
+      <div class="login-error" id="login-error" style="display:none;"></div>
+
+      <!-- FORM ĐĂNG KÝ -->
+      <form id="register-form" style="display:none; margin-top:10px;">
+        <div class="login-form-group">
+          <label class="login-label" for="reg-fullname">Họ và tên</label>
+          <input
+            type="text"
+            id="reg-fullname"
+            class="login-input"
+            placeholder="Nguyễn Văn Bò"
+            required
+          />
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="reg-username">Tên đăng nhập</label>
+          <input
+            type="text"
+            id="reg-username"
+            class="login-input"
+            placeholder="username"
+            required
+          />
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="reg-password">Mật khẩu</label>
+          <input
+            type="password"
+            id="reg-password"
+            class="login-input"
+            placeholder="••••••"
+            required
+          />
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="reg-password2">Nhập lại mật khẩu</label>
+          <input
+            type="password"
+            id="reg-password2"
+            class="login-input"
+            placeholder="••••••"
+            required
+          />
+        </div>
+
+        <button type="submit" class="login-button">Đăng ký</button>
+
+        <div class="login-switch">
+          <span>Đã có tài khoản?</span>
+          <button type="button" id="show-login">Đăng nhập</button>
+        </div>
+
+        <div class="login-error" id="register-error" style="display:none;"></div>
+      </form>
+
+      <div class="login-hint">
+        Đây là phiên bản demo, backend chạy ở <code>http://localhost:3000</code>.
+      </div>
+
       <div class="login-footer">
-        © 2025 Học viện Bò – Giao diện do Đức tự làm 😄
+        © 2025 Học viện Bò – Giao diện do Đức tự làm 😁
       </div>
     </div>
   </div>
@@ -995,7 +1069,6 @@
   <div id="app-root" style="display:none;">
     <!-- Thanh hệ thống -->
     <div class="system-bar">
-      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
       <div class="system-logo">HV</div>
       <div>
         <div class="system-text-main">
@@ -1005,6 +1078,9 @@
       </div>
       <div class="system-bar-spacer">Sinh viên: Nguyễn Đức</div>
     </div>
+
+    <!-- backdrop sidebar mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
     <div class="app-shell-main">
       <!-- Sidebar -->
@@ -1067,11 +1143,11 @@
         <!-- Topbar -->
         <header class="topbar">
           <div class="top-left">
-  <button class="menu-toggle" id="menu-toggle">☰</button>
-  <span class="path-main">Dashboard &amp; Học tập</span>
-  <span>/</span>
-  <span>Trang chủ</span>
-</div>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <span class="path-main">Dashboard &amp; Học tập</span>
+            <span>/</span>
+            <span>Trang chủ</span>
+          </div>
           <div class="top-right">
             <div class="icon-button">❓</div>
             <div class="icon-button">✉️</div>
@@ -1651,57 +1727,59 @@
   </div>
 
   <script>
-     const API_BASE = "https://hocvienbo-backend.onrender.com";
+    // ĐỔI THÀNH URL Render nếu bạn deploy, ví dụ:
+    // const API_BASE = "https://hocvienbo-backend.onrender.com";
+    const API_BASE = "http://localhost:3000";
+
     const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
     const loginError = document.getElementById("login-error");
+    const registerError = document.getElementById("register-error");
     const loginScreen = document.getElementById("login-screen");
     const appRoot = document.getElementById("app-root");
-    // Toggle sidebar trên mobile
-const sidebar = document.querySelector(".sidebar");
-const sidebarBackdrop = document.getElementById("sidebar-backdrop");
-const menuToggleBtn = document.getElementById("menu-toggle");
+    const showRegisterBtn = document.getElementById("show-register");
+    const showLoginBtn = document.getElementById("show-login");
 
-function closeSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.remove("sidebar-open");
-  if (sidebarBackdrop) sidebarBackdrop.classList.remove("show");
-}
-
-function openSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.add("sidebar-open");
-  if (sidebarBackdrop) sidebarBackdrop.classList.add("show");
-}
-
-if (menuToggleBtn) {
-  menuToggleBtn.addEventListener("click", () => {
-    if (sidebar.classList.contains("sidebar-open")) {
-      closeSidebar();
-    } else {
-      openSidebar();
+    // Chuyển giữa login & register
+    function showLoginForm() {
+      if (loginForm) loginForm.style.display = "block";
+      if (registerForm) registerForm.style.display = "none";
+      if (loginError) loginError.style.display = "none";
+      if (registerError) registerError.style.display = "none";
     }
-  });
-}
 
-if (sidebarBackdrop) {
-  sidebarBackdrop.addEventListener("click", closeSidebar);
-}
+    function showRegisterForm() {
+      if (loginForm) loginForm.style.display = "none";
+      if (registerForm) registerForm.style.display = "block";
+      if (loginError) loginError.style.display = "none";
+      if (registerError) registerError.style.display = "none";
+    }
 
+    if (showRegisterBtn) {
+      showRegisterBtn.addEventListener("click", showRegisterForm);
+    }
 
-    // LOGIN dùng backend
+    if (showLoginBtn) {
+      showLoginBtn.addEventListener("click", showLoginForm);
+    }
+
+    // Đăng nhập
     loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
 
       try {
-      const res = await fetch(`${API_BASE}/api/login`, {
+        const res = await fetch(`${API_BASE}/api/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
         });
 
-        if (!res.ok) throw new Error("Sai tài khoản hoặc mật khẩu");
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.message || "Sai tài khoản hoặc mật khẩu");
+        }
 
         const data = await res.json();
 
@@ -1709,7 +1787,6 @@ if (sidebarBackdrop) {
         loginScreen.style.display = "none";
         appRoot.style.display = "block";
 
-        // Cập nhật tên hiển thị
         document.querySelectorAll(".user-name").forEach((el) => {
           el.textContent = data.fullName || username;
         });
@@ -1718,6 +1795,78 @@ if (sidebarBackdrop) {
         loginError.style.display = "block";
       }
     });
+
+    // Đăng ký
+    if (registerForm) {
+      registerForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const fullName = document.getElementById("reg-fullname").value.trim();
+        const username = document.getElementById("reg-username").value.trim();
+        const password = document.getElementById("reg-password").value.trim();
+        const password2 = document.getElementById("reg-password2").value.trim();
+
+        if (password !== password2) {
+          registerError.textContent = "Mật khẩu nhập lại không khớp";
+          registerError.style.display = "block";
+          return;
+        }
+
+        try {
+          const res = await fetch(`${API_BASE}/api/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullName, username, password }),
+          });
+
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            throw new Error(data.message || "Đăng ký thất bại");
+          }
+
+          // Đăng ký xong quay về form đăng nhập, tự điền username
+          document.getElementById("username").value = username;
+          document.getElementById("password").value = "";
+          alert("Đăng ký thành công! Vui lòng đăng nhập.");
+
+          showLoginForm();
+        } catch (err) {
+          registerError.textContent = err.message || "Đăng ký thất bại";
+          registerError.style.display = "block";
+        }
+      });
+    }
+
+    // Toggle sidebar trên mobile
+    const sidebar = document.querySelector(".sidebar");
+    const sidebarBackdrop = document.getElementById("sidebar-backdrop");
+    const menuToggleBtn = document.getElementById("menu-toggle");
+
+    function closeSidebar() {
+      if (!sidebar) return;
+      sidebar.classList.remove("sidebar-open");
+      if (sidebarBackdrop) sidebarBackdrop.classList.remove("show");
+    }
+
+    function openSidebar() {
+      if (!sidebar) return;
+      sidebar.classList.add("sidebar-open");
+      if (sidebarBackdrop) sidebarBackdrop.classList.add("show");
+    }
+
+    if (menuToggleBtn) {
+      menuToggleBtn.addEventListener("click", () => {
+        if (sidebar.classList.contains("sidebar-open")) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+    }
+
+    if (sidebarBackdrop) {
+      sidebarBackdrop.addEventListener("click", closeSidebar);
+    }
 
     // Đổi section khi bấm menu
     document.querySelectorAll(".nav-item").forEach((item) => {
@@ -1754,99 +1903,105 @@ if (sidebarBackdrop) {
           };
           if (breadcrumb) breadcrumb.textContent = labels[sectionKey] || "Trang chủ";
         }
-      });
-              // nếu đang trên mobile thì đóng sidebar sau khi chọn menu
+
         if (window.innerWidth <= 768) {
           closeSidebar();
         }
-
+      });
     });
 
+    // Load danh sách bài tập từ backend
     async function loadAssignments() {
-  try {
-    const res = await fetch(`${API_BASE}/api/assignments`);
-    const list = await res.json();
-    const container = document.getElementById("assignments-container");
-    if (!container) return;
-    container.innerHTML = "";
+      try {
+        const res = await fetch(`${API_BASE}/api/assignments`);
+        const list = await res.json();
+        const container = document.getElementById("assignments-container");
+        if (!container) return;
+        container.innerHTML = "";
 
-    list.forEach((a) => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "assignment-item";
+        list.forEach((a) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "assignment-item";
 
-      const statusClass =
-        a.status === "submitted" ? "assignment-status done" : "assignment-status";
-      const statusText = a.status === "submitted" ? "Đã nộp" : "Chưa nộp";
+          const statusClass =
+            a.status === "submitted"
+              ? "assignment-status done"
+              : "assignment-status";
+          const statusText = a.status === "submitted" ? "Đã nộp" : "Chưa nộp";
 
-      const d = new Date(a.deadline);
-      const deadlineText =
-        d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) +
-        " " +
-        d.toLocaleDateString("vi-VN");
+          const d = new Date(a.deadline);
+          const deadlineText =
+            d.toLocaleTimeString("vi-VN", {
+              hour: "2-digit",
+              minute: "2-digit",
+            }) +
+            " " +
+            d.toLocaleDateString("vi-VN");
 
-      const icon = a.id === 1 ? "💻" : a.id === 2 ? "🌐" : "📄";
+          const icon = a.id === 1 ? "💻" : a.id === 2 ? "🌐" : "📄";
 
-      wrapper.innerHTML = `
-        <div class="assignment-left">
-          <div class="file-icon">${icon}</div>
-          <div>
-            <div class="assignment-title">${a.title}</div>
-            <div class="assignment-tags">
-              Môn: ${a.subject} • Lần nộp: ${a.submitCount}
+          wrapper.innerHTML = `
+            <div class="assignment-left">
+              <div class="file-icon">${icon}</div>
+              <div>
+                <div class="assignment-title">${a.title}</div>
+                <div class="assignment-tags">
+                  Môn: ${a.subject} • Lần nộp: ${a.submitCount}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="assignment-right">
-          <div>Hạn nộp: ${deadlineText}</div>
-          <div class="${statusClass}">${statusText}</div>
-          <button class="submit-btn" data-id="${a.id}" ${
-        a.status === "submitted" ? "disabled" : ""
-      }>
-            ${a.status === "submitted" ? "Đã nộp" : "Nộp bài"}
-          </button>
-        </div>
-      `;
+            <div class="assignment-right">
+              <div>Hạn nộp: ${deadlineText}</div>
+              <div class="${statusClass}">${statusText}</div>
+              <button class="submit-btn" data-id="${a.id}" ${
+            a.status === "submitted" ? "disabled" : ""
+          }>
+                ${a.status === "submitted" ? "Đã nộp" : "Nộp bài"}
+              </button>
+            </div>
+          `;
 
-      container.appendChild(wrapper);
-    });
-  } catch (err) {
-    console.error("Lỗi tải bài tập:", err);
-  }
-}
-// Bắt sự kiện click nút Nộp bài
-const assignmentsContainer = document.getElementById("assignments-container");
-
-if (assignmentsContainer) {
-  assignmentsContainer.addEventListener("click", async (e) => {
-    const btn = e.target.closest(".submit-btn");
-    if (!btn) return;
-
-    const id = btn.getAttribute("data-id");
-    if (!id) return;
-
-    btn.disabled = true;
-    btn.textContent = "Đang nộp...";
-
-    try {
-      const API_BASE = "https://hocvienbo-backend.onrender.com";
-      const res = await fetch(
-  `${API_BASE}/api/assignments/${id}/submit`,
-  { method: "POST" }
-);
-      if (!res.ok) {
-        throw new Error("Nộp bài thất bại");
+          container.appendChild(wrapper);
+        });
+      } catch (err) {
+        console.error("Lỗi tải bài tập:", err);
       }
-
-      // nộp xong thì reload lại danh sách
-      await loadAssignments();
-    } catch (err) {
-      alert(err.message || "Có lỗi khi nộp bài");
-      btn.disabled = false;
-      btn.textContent = "Nộp bài";
     }
-  });
-}
 
+    // Bắt sự kiện click nút Nộp bài
+    const assignmentsContainer = document.getElementById("assignments-container");
+
+    if (assignmentsContainer) {
+      assignmentsContainer.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".submit-btn");
+        if (!btn) return;
+
+        const id = btn.getAttribute("data-id");
+        if (!id) return;
+
+        btn.disabled = true;
+        btn.textContent = "Đang nộp...";
+
+        try {
+          const res = await fetch(
+            `${API_BASE}/api/assignments/${id}/submit`,
+            {
+              method: "POST",
+            }
+          );
+
+          if (!res.ok) {
+            throw new Error("Nộp bài thất bại");
+          }
+
+          await loadAssignments();
+        } catch (err) {
+          alert(err.message || "Có lỗi khi nộp bài");
+          btn.disabled = false;
+          btn.textContent = "Nộp bài";
+        }
+      });
+    }
 
     document.addEventListener("DOMContentLoaded", loadAssignments);
   </script>
