@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Hệ thống sinh viên - Học viện Bò 😄</title>
+  <title>Hệ thống sinh viên - Học viện Bò 😆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
@@ -36,7 +36,7 @@
       flex-direction: column;
     }
 
-    /* ========= LOGIN SCREEN ========= */
+    /* ===== LOGIN ===== */
 
     .login-screen {
       flex: 1;
@@ -158,7 +158,7 @@
       text-align: center;
     }
 
-    /* ========= APP SHELL ========= */
+    /* ===== APP SHELL ===== */
 
     .system-bar {
       width: 100%;
@@ -382,7 +382,7 @@
       gap: 18px;
     }
 
-    /* ====== CARDS & GRID ====== */
+    /* ===== CARDS & GRID ===== */
 
     .grid-top {
       display: grid;
@@ -575,27 +575,25 @@
       opacity: 0.65;
     }
 
-   .grid-bottom {
-  display: grid;
-  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.3fr);
-  gap: 16px;
-  align-items: flex-start;
-  margin-top: 18px; 
-}
-
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.3fr);
+      gap: 16px;
+      align-items: flex-start;
+      margin-top: 18px;
+    }
 
     .assignment-item {
-  border-radius: 12px;
-  border: 1px dashed #e5e7eb;
-  padding: 9px 11px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 8px 0;          /* khoảng cách trên + dưới */
-  background: #ffffff;    /* ô trắng tách hẳn khỏi nền */
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04); /* bóng nhẹ cho tách hơn */
-}
-
+      border-radius: 12px;
+      border: 1px dashed #e5e7eb;
+      padding: 9px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 8px 0;
+      background: #ffffff;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+    }
 
     .assignment-left {
       display: flex;
@@ -641,11 +639,44 @@
       background: #ffedd5;
       font-size: 10px;
     }
+    .submit-btn {
+  margin-top: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: none;
+  background: var(--blue-main);
+  color: #ffffff;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+.submit-btn[disabled] {
+  background: #9ca3af;
+  cursor: default;
+  opacity: 0.8;
+}
+
 
     .assignment-status.done {
       border-color: #22c55e;
       color: #15803d;
       background: #dcfce7;
+    }
+
+    .card-assignments {
+      background: #f3f6ff;
+    }
+
+    .card-assignments .assignment-item:first-child {
+      margin-top: 4px;
+    }
+
+    .card-assignments .assignment-item:last-child {
+      margin-bottom: 4px;
     }
 
     .calendar {
@@ -703,7 +734,7 @@
       color: #ea580c;
     }
 
-    /* ========== SECTION SWITCHING ========== */
+    /* ===== SECTIONS ===== */
 
     .section-page {
       display: none;
@@ -765,39 +796,146 @@
       font-weight: 500;
     }
 
-    @media (max-width: 1100px) {
+    /* ===== RESPONSIVE ===== */
+
+    /* Tablet */
+    @media (max-width: 992px) {
       .grid-top {
-        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+        grid-template-columns: minmax(0, 1fr);
       }
+      .grid-top > .card:nth-child(2),
       .grid-top > .card:nth-child(3) {
-        grid-column: span 2;
+        margin-top: 10px;
       }
       .grid-classes {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .sidebar {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .content {
-        padding: 14px 10px 18px;
-      }
-      .grid-top {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .grid-classes {
-        grid-template-columns: minmax(0, 1fr);
       }
       .grid-bottom {
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
+    /* Điện thoại */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .app-shell-main {
+    flex-direction: column;
+  }
+
+  /* sidebar dạng trượt cho mobile */
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 240px;
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-out;
+    box-shadow: 8px 0 20px rgba(15, 23, 42, 0.2);
+    background: var(--bg-sidebar);
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop.show {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    z-index: 25;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .content {
+    padding: 10px 8px 16px;
+  }
+
+  .grid-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid-classes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid-bottom {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 12px;
+  }
+
+  .card {
+    border-radius: 14px;
+    padding: 10px 11px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+
+  .card-greeting h2 {
+    font-size: 18px;
+  }
+
+  .card-greeting p {
+    font-size: 12px;
+  }
+
+  .greeting-hand {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+    right: 14px;
+  }
+
+  .class-name {
+    font-size: 13px;
+  }
+
+  .assignment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .assignment-right {
+    text-align: left;
+  }
+
+  .calendar-grid {
+    font-size: 11px;
+  }
+}
+
+    .menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+/* backdrop cho sidebar mobile */
+.sidebar-backdrop {
+  display: none;
+}
+
   </style>
 </head>
 <body>
-  <!-- --------- MÀN HÌNH ĐĂNG NHẬP --------- -->
+  <!-- ===== LOGIN SCREEN ===== -->
   <div class="login-screen" id="login-screen">
     <div class="login-card">
       <div class="login-header">
@@ -810,7 +948,7 @@
 
       <p class="login-text">
         Vui lòng nhập tên đăng nhập và mật khẩu.<br />
-        <strong>Demo:</strong> user <b>duc</b> / mật khẩu <b>123456</b>.
+        Backend demo đang dùng tài khoản: <b>duc / 123456</b>.
       </p>
 
       <form id="login-form">
@@ -820,7 +958,7 @@
             type="text"
             id="username"
             class="login-input"
-            placeholder="Ví dụ: duc"
+            placeholder="duc"
             required
           />
         </div>
@@ -843,34 +981,33 @@
         </div>
 
         <div class="login-hint">
-          <strong>Lưu ý:</strong> Đây là phiên bản demo, không kết nối hệ thống thật.
+          Đây là phiên bản demo, backend chạy ở <code>http://localhost:3000</code>.
         </div>
       </form>
 
       <div class="login-footer">
-        © 2025 Học viện Bò – Giao diện do Duck tự làm 😄
+        © 2025 Học viện Bò – Giao diện do Đức tự làm 😄
       </div>
     </div>
   </div>
 
-  <!-- --------- APP SAU KHI ĐĂNG NHẬP --------- -->
+  <!-- ===== APP ===== -->
   <div id="app-root" style="display:none;">
-    <!-- THANH HỆ THỐNG -->
+    <!-- Thanh hệ thống -->
     <div class="system-bar">
+      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
       <div class="system-logo">HV</div>
       <div>
         <div class="system-text-main">
           HỆ THỐNG PHẦN MỀM CHỈ ĐẠO, ĐIỀU HÀNH - CỔNG NGƯỜI HỌC
         </div>
-        <div class="system-text-sub">
-          HỌC VIỆN BÒ EDITION 🐄
-        </div>
+        <div class="system-text-sub">HỌC VIỆN BÒ EDITION 🐄</div>
       </div>
-      <div class="system-bar-spacer">Sinh viên: Nguyễn Duck</div>
+      <div class="system-bar-spacer">Sinh viên: Nguyễn Đức</div>
     </div>
 
     <div class="app-shell-main">
-      <!-- SIDEBAR -->
+      <!-- Sidebar -->
       <aside class="sidebar">
         <div>
           <ul class="nav-list">
@@ -921,19 +1058,20 @@
         </div>
 
         <div class="sidebar-footer">
-          © 2025 Học viện Bò – phiên bản demo của Duck
+          © 2025 Học viện Bò – phiên bản demo của Đức
         </div>
       </aside>
 
-      <!-- MAIN -->
+      <!-- Main -->
       <main class="main">
-        <!-- TOPBAR -->
+        <!-- Topbar -->
         <header class="topbar">
           <div class="top-left">
-            <span class="path-main">Dashboard &amp; Học tập</span>
-            <span>/</span>
-            <span>Trang chủ</span>
-          </div>
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <span class="path-main">Dashboard &amp; Học tập</span>
+  <span>/</span>
+  <span>Trang chủ</span>
+</div>
           <div class="top-right">
             <div class="icon-button">❓</div>
             <div class="icon-button">✉️</div>
@@ -941,32 +1079,30 @@
             <div class="user-chip">
               <div class="user-avatar">ĐN</div>
               <div>
-                <div class="user-name">Nguyễn Duck</div>
+                <div class="user-name">Nguyễn Đức</div>
                 <div class="user-role">Sinh viên Học viện Bò</div>
               </div>
             </div>
           </div>
         </header>
 
-        <!-- NỘI DUNG CHÍNH -->
+        <!-- Content -->
         <div class="content">
-          <!-- ========= TRANG CHỦ ========= -->
+          <!-- ==== Trang chủ ==== -->
           <div id="section-home" class="section-page active-section">
-            <!-- TOP ROW -->
+            <!-- Top row -->
             <section class="grid-top">
-              <!-- Greeting -->
               <div class="card">
                 <div class="card-greeting">
                   <h2>Xin chào Đức, mừng bạn quay lại!</h2>
                   <p>
-                    Chào mừng trở lại Học viện Bò </p><p> chúc bạn một ngày học tập thật
+                    Chào mừng trở lại Học viện Bò – chúc bạn một ngày học tập thật
                     nhiều “cỏ” kiến thức 🌱
                   </p>
                   <div class="greeting-hand">✌️</div>
                 </div>
               </div>
 
-              <!-- Thông báo -->
               <div class="card">
                 <div class="card-header">
                   <div>
@@ -982,7 +1118,6 @@
                 </div>
               </div>
 
-              <!-- Sự kiện -->
               <div class="card">
                 <div class="card-header">
                   <div>
@@ -998,7 +1133,7 @@
               </div>
             </section>
 
-            <!-- LỚP TÍN CHỈ -->
+            <!-- Lớp tín chỉ -->
             <section>
               <div class="section-header">
                 <div class="section-title">Lớp tín chỉ</div>
@@ -1009,7 +1144,6 @@
               </div>
 
               <div class="grid-classes">
-                <!-- Đất mũi -->
                 <div class="class-card">
                   <div class="class-badge"><span>●</span> Đang học</div>
                   <div class="class-name">Đất mũi</div>
@@ -1021,7 +1155,6 @@
                   <div class="class-illustration"></div>
                 </div>
 
-                <!-- Lịch sử Bò & Loài Người -->
                 <div class="class-card">
                   <div class="class-badge"><span>●</span> Đang học</div>
                   <div class="class-name">Lịch sử Bò &amp; Loài Người</div>
@@ -1033,7 +1166,6 @@
                   <div class="class-illustration"></div>
                 </div>
 
-                <!-- Toán cho Bò 1 -->
                 <div class="class-card">
                   <div class="class-badge"><span>●</span> Đang học</div>
                   <div class="class-name">Toán cho Bò 1 (Đếm cỏ &amp; chuồng)</div>
@@ -1045,7 +1177,6 @@
                   <div class="class-illustration"></div>
                 </div>
 
-                <!-- Tiếng Người 1 -->
                 <div class="class-card">
                   <div class="class-badge"><span>●</span> Đang học</div>
                   <div class="class-name">Tiếng Người 1 (Bò giao tiếp)</div>
@@ -1059,10 +1190,9 @@
               </div>
             </section>
 
-            <!-- BÀI TẬP & LỊCH -->
+            <!-- Bài tập & Lịch -->
             <section class="grid-bottom">
-              <!-- Bài tập -->
-                <div class="card card-assignments">
+              <div class="card card-assignments">
                 <div class="section-header">
                   <div class="section-title">Bài tập, bài kiểm tra</div>
                   <div class="section-actions">
@@ -1070,64 +1200,13 @@
                   </div>
                 </div>
 
-                <div class="assignment-item">
-                  <div class="assignment-left">
-                    <div class="file-icon">💻</div>
-                    <div>
-                      <div class="assignment-title">
-                        BÀI TẬP VẼ MẠNG VÀ XÂU KÝ TỰ.cpp
-                      </div>
-                      <div class="assignment-tags">
-                        Môn: Lập trình C++ cho Bò non • Lần nộp: 0
-                      </div>
-                    </div>
-                  </div>
-                  <div class="assignment-right">
-                    <div>Hạn nộp: 16:14 16/11/2025</div>
-                    <div class="assignment-status">Chưa nộp</div>
-                  </div>
-                </div>
-
-                <div class="assignment-item">
-                  <div class="assignment-left">
-                    <div class="file-icon">🌐</div>
-                    <div>
-                      <div class="assignment-title">bo-profile.html</div>
-                      <div class="assignment-tags">
-                        Môn: Web Bò 101 • Lần nộp: 1
-                      </div>
-                    </div>
-                  </div>
-                  <div class="assignment-right">
-                    <div>Hạn nộp: 23:59 25/11/2025</div>
-                    <div class="assignment-status done">Đã nộp</div>
-                  </div>
-                </div>
-
-                <div class="assignment-item">
-                  <div class="assignment-left">
-                    <div class="file-icon">📄</div>
-                    <div>
-                      <div class="assignment-title">
-                        Nhật ký Bò ngày đầu nhập học.docx
-                      </div>
-                      <div class="assignment-tags">
-                        Môn: Bò 101 – Nhập môn Bò Học • Lần nộp: 0
-                      </div>
-                    </div>
-                  </div>
-                  <div class="assignment-right">
-                    <div>Hạn nộp: 21:00 20/11/2025</div>
-                    <div class="assignment-status">Chưa nộp</div>
-                  </div>
-                </div>
+                <div id="assignments-container"></div>
 
                 <div class="empty-state" style="margin-top:8px;">
                   Không còn bài tập khác.
                 </div>
               </div>
 
-              <!-- Lịch -->
               <div class="card">
                 <div class="section-header">
                   <div class="section-title">Lịch</div>
@@ -1196,7 +1275,7 @@
             </section>
           </div>
 
-          <!-- ========= TIN TỨC ========= -->
+          <!-- ==== Tin tức ==== -->
           <div id="section-news" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1237,7 +1316,7 @@
             </section>
           </div>
 
-          <!-- ========= THÔNG TIN CÁ NHÂN ========= -->
+          <!-- ==== Thông tin cá nhân ==== -->
           <div id="section-profile" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1250,7 +1329,7 @@
               <div class="profile-grid">
                 <div class="profile-row">
                   <span class="profile-label">Họ và tên</span>
-                  <span class="profile-value">Nguyễn Duck</span>
+                  <span class="profile-value user-name">Nguyễn Đức</span>
                 </div>
                 <div class="profile-row">
                   <span class="profile-label">Mã sinh viên</span>
@@ -1276,7 +1355,7 @@
             </section>
           </div>
 
-          <!-- ========= LỊCH & SỰ KIỆN ========= -->
+          <!-- ==== Lịch & Sự kiện ==== -->
           <div id="section-schedule" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1317,7 +1396,7 @@
             </section>
           </div>
 
-          <!-- ========= LỚP HÀNH CHÍNH ========= -->
+          <!-- ==== Lớp hành chính ==== -->
           <div id="section-adminclass" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1339,18 +1418,18 @@
                   <span class="profile-value">Thầy Bò Trắng</span>
                 </div>
                 <div class="profile-row">
-                  <span class="profile-label">Sỉ số</span>
-                  <span class="profile-value">64 Bò</span>
+                  <span class="profile-label">Sĩ số</span>
+                  <span class="profile-value">35 Bò</span>
                 </div>
                 <div class="profile-row">
                   <span class="profile-label">Trưởng lớp</span>
-                  <span class="profile-value">Nguyễn Duck</span>
+                  <span class="profile-value">Nguyễn Đức</span>
                 </div>
               </div>
             </section>
           </div>
 
-          <!-- ========= HỌC TẬP ========= -->
+          <!-- ==== Học tập ==== -->
           <div id="section-study" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1387,7 +1466,7 @@
             </section>
           </div>
 
-          <!-- ========= DỊCH VỤ HÀNH CHÍNH ========= -->
+          <!-- ==== Dịch vụ hành chính ==== -->
           <div id="section-service" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1416,7 +1495,7 @@
             </section>
           </div>
 
-          <!-- ========= TÀI CHÍNH ========= -->
+          <!-- ==== Tài chính ==== -->
           <div id="section-finance" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1431,39 +1510,50 @@
               <div class="profile-grid">
                 <div class="profile-row">
                   <span class="profile-label">Học phí HK1 25-26</span>
-                  <span class="profile-value">100.000.000đ</span>
+                  <span class="profile-value">10.000.000đ</span>
                 </div>
                 <div class="profile-row">
                   <span class="profile-label">Đã đóng</span>
-                  <span class="profile-value">97.400.000đ</span>
+                  <span class="profile-value">7.000.000đ</span>
                 </div>
                 <div class="profile-row">
                   <span class="profile-label">Còn lại</span>
-                  <span class="profile-value">2.600.000đ</span>
+                  <span class="profile-value">3.000.000đ</span>
                 </div>
               </div>
             </section>
           </div>
 
-          <!-- ========= PHẢN HỒI ========= -->
+          <!-- ==== Phản hồi ==== -->
           <div id="section-feedback" class="section-page">
             <section class="card">
               <div class="card-header">
                 <div>
                   <div class="card-title">Góp ý &amp; phản hồi</div>
                   <div class="card-subtitle">
-                    Gửi góp ý cho Học viện Bò
+                    Gửi góp ý cho Học viện Bò (demo)
                   </div>
                 </div>
               </div>
 
-              <p style="font-size:13px;color:var(--text-muted);">
-                (Demo) Sau này bạn có thể thêm form góp ý thật ở đây.
+              <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">
+                Sau này bạn có thể thêm form gửi góp ý thật, hiện tại chỉ là mô phỏng.
               </p>
+
+              <div class="profile-grid">
+                <div class="profile-row">
+                  <span class="profile-label">Chủ đề</span>
+                  <span class="profile-value">Góp ý hệ thống Học viện Bò</span>
+                </div>
+                <div class="profile-row">
+                  <span class="profile-label">Trạng thái</span>
+                  <span class="profile-value">Đang phát triển</span>
+                </div>
+              </div>
             </section>
           </div>
 
-          <!-- ========= KHẢO SÁT ========= -->
+          <!-- ==== Khảo sát ==== -->
           <div id="section-survey" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1490,7 +1580,7 @@
             </section>
           </div>
 
-          <!-- ========= CUỘC THI ========= -->
+          <!-- ==== Cuộc thi ==== -->
           <div id="section-contest" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1515,25 +1605,25 @@
             </section>
           </div>
 
-          <!-- ========= THÔNG BÁO ========= -->
+          <!-- ==== Thông báo ==== -->
           <div id="section-notify" class="section-page">
             <section class="card">
               <div class="card-header">
                 <div>
                   <div class="card-title">Thông báo</div>
                   <div class="card-subtitle">
-                    Tập trung tất cả thông báo gửi đến bạn
+                    Tập trung tất cả thông báo gửi đến bạn (demo)
                   </div>
                 </div>
               </div>
 
               <p style="font-size:13px;color:var(--text-muted);">
-                (Demo) Bạn có thể hiển thị danh sách thông báo từ API thật sau này.
+                Sau này bạn có thể kết nối API thật để lấy danh sách thông báo tại đây.
               </p>
             </section>
           </div>
 
-          <!-- ========= TIỆN ÍCH KHÁC ========= -->
+          <!-- ==== Tiện ích khác ==== -->
           <div id="section-tools" class="section-page">
             <section class="card">
               <div class="card-header">
@@ -1561,44 +1651,74 @@
   </div>
 
   <script>
-    // Đăng nhập demo
     const loginForm = document.getElementById("login-form");
     const loginError = document.getElementById("login-error");
     const loginScreen = document.getElementById("login-screen");
     const appRoot = document.getElementById("app-root");
+    // Toggle sidebar trên mobile
+const sidebar = document.querySelector(".sidebar");
+const sidebarBackdrop = document.getElementById("sidebar-backdrop");
+const menuToggleBtn = document.getElementById("menu-toggle");
 
-    loginForm.addEventListener("submit", function (e) {
+function closeSidebar() {
+  if (!sidebar) return;
+  sidebar.classList.remove("sidebar-open");
+  if (sidebarBackdrop) sidebarBackdrop.classList.remove("show");
+}
+
+function openSidebar() {
+  if (!sidebar) return;
+  sidebar.classList.add("sidebar-open");
+  if (sidebarBackdrop) sidebarBackdrop.classList.add("show");
+}
+
+if (menuToggleBtn) {
+  menuToggleBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains("sidebar-open")) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+}
+
+if (sidebarBackdrop) {
+  sidebarBackdrop.addEventListener("click", closeSidebar);
+}
+
+
+    // LOGIN dùng backend
+    loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
 
-      if (username === "duc" && password === "123456") {
+      try {
+      const res = await fetch(`${API_BASE}/api/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+
+        if (!res.ok) throw new Error("Sai tài khoản hoặc mật khẩu");
+
+        const data = await res.json();
+
         loginError.style.display = "none";
         loginScreen.style.display = "none";
         appRoot.style.display = "block";
 
-        const displayName = username || "Nguyễn Duck";
+        // Cập nhật tên hiển thị
         document.querySelectorAll(".user-name").forEach((el) => {
-          el.textContent = displayName;
+          el.textContent = data.fullName || username;
         });
-       if (username === "duc" && password === "123456") {
-  loginError.style.display = "none";
-  loginScreen.style.display = "none";
-  appRoot.style.display = "block";
-
-  const displayName = username || "Nguyễn Duck";
-  document.querySelectorAll(".user-name").forEach((el) => {
-    el.textContent = displayName;
-  });
-} else {
-  loginError.style.display = "block";
-}
-      } else {
+      } catch (err) {
+        loginError.textContent = err.message || "Đăng nhập thất bại";
         loginError.style.display = "block";
       }
     });
 
-    // hiệu ứng chọn menu + đổi màn nội dung
+    // Đổi section khi bấm menu
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.addEventListener("click", () => {
         document
@@ -1631,12 +1751,103 @@
             notify: "Thông báo",
             tools: "Tiện ích khác",
           };
-          if (breadcrumb) {
-            breadcrumb.textContent = labels[sectionKey] || "Trang chủ";
-          }
+          if (breadcrumb) breadcrumb.textContent = labels[sectionKey] || "Trang chủ";
         }
       });
+              // nếu đang trên mobile thì đóng sidebar sau khi chọn menu
+        if (window.innerWidth <= 768) {
+          closeSidebar();
+        }
+
     });
+
+    async function loadAssignments() {
+  try {
+    const res = await fetch(`${API_BASE}/api/assignments`);
+    const list = await res.json();
+    const container = document.getElementById("assignments-container");
+    if (!container) return;
+    container.innerHTML = "";
+
+    list.forEach((a) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "assignment-item";
+
+      const statusClass =
+        a.status === "submitted" ? "assignment-status done" : "assignment-status";
+      const statusText = a.status === "submitted" ? "Đã nộp" : "Chưa nộp";
+
+      const d = new Date(a.deadline);
+      const deadlineText =
+        d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) +
+        " " +
+        d.toLocaleDateString("vi-VN");
+
+      const icon = a.id === 1 ? "💻" : a.id === 2 ? "🌐" : "📄";
+
+      wrapper.innerHTML = `
+        <div class="assignment-left">
+          <div class="file-icon">${icon}</div>
+          <div>
+            <div class="assignment-title">${a.title}</div>
+            <div class="assignment-tags">
+              Môn: ${a.subject} • Lần nộp: ${a.submitCount}
+            </div>
+          </div>
+        </div>
+        <div class="assignment-right">
+          <div>Hạn nộp: ${deadlineText}</div>
+          <div class="${statusClass}">${statusText}</div>
+          <button class="submit-btn" data-id="${a.id}" ${
+        a.status === "submitted" ? "disabled" : ""
+      }>
+            ${a.status === "submitted" ? "Đã nộp" : "Nộp bài"}
+          </button>
+        </div>
+      `;
+
+      container.appendChild(wrapper);
+    });
+  } catch (err) {
+    console.error("Lỗi tải bài tập:", err);
+  }
+}
+// Bắt sự kiện click nút Nộp bài
+const assignmentsContainer = document.getElementById("assignments-container");
+
+if (assignmentsContainer) {
+  assignmentsContainer.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".submit-btn");
+    if (!btn) return;
+
+    const id = btn.getAttribute("data-id");
+    if (!id) return;
+
+    btn.disabled = true;
+    btn.textContent = "Đang nộp...";
+
+    try {
+      const API_BASE = "https://hocvienbo-backend.onrender.com";
+      const res = await fetch(
+  `${API_BASE}/api/assignments/${id}/submit`,
+  { method: "POST" }
+);
+      if (!res.ok) {
+        throw new Error("Nộp bài thất bại");
+      }
+
+      // nộp xong thì reload lại danh sách
+      await loadAssignments();
+    } catch (err) {
+      alert(err.message || "Có lỗi khi nộp bài");
+      btn.disabled = false;
+      btn.textContent = "Nộp bài";
+    }
+  });
+}
+
+
+    document.addEventListener("DOMContentLoaded", loadAssignments);
   </script>
 </body>
 </html>
